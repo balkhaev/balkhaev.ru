@@ -26,7 +26,6 @@ jobs:
         working-directory: ./frontend
 
       - name: Deploy to server
-        id: deploy
         uses: Pendect/action-rsyncer@v1.1.0
         env:
           DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
@@ -34,6 +33,3 @@ jobs:
           flags: '-avzr --delete'
           src: 'frontend/dist/'
           dest: 'balkhaev@94.103.86.97:/var/www/balkhaev.ru/public'
-
-      - name: Display status from deploy
-        run: echo "${{ steps.deploy.outputs.status }}"
