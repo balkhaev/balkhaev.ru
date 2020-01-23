@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: '10.x'
 
+      - name: Enter frontend folder
+        run: cd frontend
+
       - name: Install Dependencies
         run: npm install
 
