@@ -25,10 +25,15 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
-      - name: rsync deployments
-        uses: contention/rsync-deployments@v1.0.0
+      - name: Deploy to server
+        id: deploy
+        uses: Pendect/action-rsyncer@v1.1.0
         env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
         with:
-          RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
-          RSYNC_TARGET: balkhaev@94.103.86.97:/var/www/balkhaev.ru/public
+          flags: '-avzr --delete'
+          src: 'public/'
+          dest: 'balkhaev@94.103.86.97:/var/www/balkhaev.ru/public'
+
+      - name: Display status from deploy
+        run: echo "${{ steps.deploy.outputs.status }}"
