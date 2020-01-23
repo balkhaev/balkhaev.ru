@@ -30,4 +30,5 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
-          args: -avzr --delete --exclude .htaccess --exclude /uploads/ balkhaev@94.103.86.97:/var/www/balkhaev.ru/public
+          RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
+          RSYNC_TARGET: balkhaev@94.103.86.97:/var/www/balkhaev.ru/public
