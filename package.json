@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "cd frontend && npm run serve",
+    "deploy": "git add . && git commit -m 'deploy' && git push"
   },
   "keywords": [],
   "author": "",
