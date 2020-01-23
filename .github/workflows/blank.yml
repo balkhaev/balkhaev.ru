@@ -32,7 +32,7 @@ jobs:
           DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
         with:
           flags: '-avzr --delete'
-          src: 'public/'
+          src: 'frontend/dist/'
           dest: 'balkhaev@94.103.86.97:/var/www/balkhaev.ru/public'
 
       - name: Display status from deploy
